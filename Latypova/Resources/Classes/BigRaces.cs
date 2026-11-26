@@ -1,5 +1,4 @@
-﻿using Latypova.Resources.Classes.Games;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 namespace Latypova
 {
@@ -21,25 +20,12 @@ namespace Latypova
 
         public void StatShow()
         {
-            AddTeam("Россия");
-            AddTeam("Казахстан");
-            AddTeam("Китай");
-            AddTeam("Франция");
+            if (teams.Count < 2)
+            {
+                Console.WriteLine("Недостаточно команд для проведения Больших гонок.");
+                return;
+            }
 
-            BeachGame beachGame = new BeachGame();
-            gameList.Add(beachGame);
-            BullsGame bullsGame = new BullsGame();
-            gameList.Add(bullsGame);
-            FishingGame fishingGame = new FishingGame();
-            gameList.Add(fishingGame);
-            HillGame hillGame = new HillGame();
-            gameList.Add(hillGame);
-            MouseTrapGame mouseTrapGame = new MouseTrapGame();
-            gameList.Add(mouseTrapGame);
-            PostmanGame postmanGame = new PostmanGame();
-            gameList.Add(postmanGame);
-            SeaGame seaGame = new SeaGame();
-            gameList.Add(seaGame);
             Random.Shared.Shuffle(CollectionsMarshal.AsSpan<IGame>(gameList));
             gamesQueue = new Queue<IGame>(gameList.Take(6));
 

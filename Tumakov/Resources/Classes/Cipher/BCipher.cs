@@ -1,4 +1,6 @@
-﻿namespace Tumakov
+﻿using System.Text;
+
+namespace Tumakov
 {
     public class BCipher : ICipher
     {
@@ -14,15 +16,29 @@
             {
                 string lowAlphabet = "";
                 string upAlphabet = "";
+                
                 if (_engLowAlphabet.Contains(c))
                 {
                     lowAlphabet = _engLowAlphabet;
-                    upAlphabet = _engUpAlphabet;
                 }
                 else
                 {
                     lowAlphabet = _rusLowAlphabet;
+                }
+
+                if (_engUpAlphabet.Contains(c))
+                {
+                    upAlphabet = _engUpAlphabet;
+                }
+                else
+                {
                     upAlphabet = _rusUpAlphabet;
+                }
+
+                if ((!lowAlphabet.Contains(c) && !upAlphabet.Contains(c)) || c == ' ')
+                {
+                    encoded += c;
+                    continue;
                 }
 
                 if (lowAlphabet.Contains(c))
@@ -33,10 +49,7 @@
                 {
                     encoded += upAlphabet[upAlphabet.Length - upAlphabet.IndexOf(c)];
                 }
-                else
-                {
-                    encoded += c;
-                }
+                
             }
             return encoded;
         }
@@ -51,12 +64,25 @@
                 if (_engLowAlphabet.Contains(c))
                 {
                     lowAlphabet = _engLowAlphabet;
-                    upAlphabet = _engUpAlphabet;
                 }
                 else
                 {
                     lowAlphabet = _rusLowAlphabet;
+                }
+
+                if (_engUpAlphabet.Contains(c))
+                {
+                    upAlphabet = _engUpAlphabet;
+                }
+                else
+                {
                     upAlphabet = _rusUpAlphabet;
+                }
+
+                if ((!lowAlphabet.Contains(c) && !upAlphabet.Contains(c)) || c == ' ')
+                {
+                    decoded += c;
+                    continue;
                 }
 
                 if (lowAlphabet.Contains(c))

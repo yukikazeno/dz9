@@ -4,17 +4,17 @@
     {
         static void Task1()
         {
-            string exampleText = "Wonderful, isn't it?";
+            string exampleText = "Как у тебя дела?";
             ACipher aCipher = new ACipher();
-            string encodedText = aCipher.Encode(exampleText, 0);
-            string decodedText = aCipher.Decode(encodedText, 0);
+            string encodedText = aCipher.Encode(exampleText);
+            string decodedText = aCipher.Decode(encodedText);
             Console.WriteLine($"Original: {exampleText}");
             Console.WriteLine($"Encoded: {encodedText}");
             Console.WriteLine($"Decoded: {decodedText}\n");
 
             BCipher bCipher = new BCipher();
-            string bEncodedText = bCipher.Encode(exampleText, 0);
-            string bDecodedText = bCipher.Decode(bEncodedText, 0);
+            string bEncodedText = bCipher.Encode(exampleText);
+            string bDecodedText = bCipher.Decode(bEncodedText);
             Console.WriteLine($"Original: {exampleText}");
             Console.WriteLine($"Encoded: {bEncodedText}");
             Console.WriteLine($"Decoded: {bDecodedText}");
